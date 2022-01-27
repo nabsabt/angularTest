@@ -1,0 +1,8 @@
+body{
+    background-color: rgba(240, 120, 20, 0.2);
+}
+p{
+    text-align: center;
+    color: green;
+    font-size: 24px;
+}

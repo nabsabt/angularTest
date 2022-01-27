@@ -1,0 +1,36 @@
+<p>servers component works!</p>
+<!-- <input
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)"
+> $event passes a value -->
+<label>Server name, with two-way binding</label>
+<input
+    type="text"
+    class="form-control"
+    [(ngModel)]="serverName">
+<p>{{ serverName}}</p>
+<button class="btn btn-primary addServerButton" [disabled]="!allowNewServer" (click)="onCreateServer()">Add server</button> <!--(click) is an eventbinding
+, [disabled] is a data binding-->
+<br>
+<button class="btn btn-primary" [disabled]="!serverCreated" (click)="removeServer()">Remove server</button>
+<!-- <p style="opacity: 0.3;">{{ allowNewServer }}</p>
+<br>
+<h3>{{ serverCreationStatus }}</h3> -->
+<br>
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p> <!--*ngIf is a structural directive, it changes the structure of the DOM-->
+<br>
+<ng-template #noServer> <!--This is the same, as <p *ngIf="!serverCreated"></p>-->
+    <p>No server was created</p>
+</ng-template>
+<label>Username</label>
+<input
+type="text"
+class="form-control"
+[(ngModel)] = "userName">
+<button class="btn btn-primary" [disabled]="userName===''" (click)="resetUsername()">Reset username</button>
+<p>{{ userName }}</p>
+
+<app-server *ngFor="let x of servers"></app-server>  <!--the "let x of y" loops through the 'servers' array in this case. ngFor is a pre-defined directive -->
+<app-warningalert></app-warningalert>
+
